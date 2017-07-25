@@ -2,7 +2,7 @@ sudo: true
 dist: trusty
 before_install:
  - sudo apt-get -y install cmake
- - sudo add-apt-repository -y ppa:beineri/opt-qt591-xenial
+ - sudo add-apt-repository -y ppa:beineri/opt-qt591-trusty
  - sudo apt-get update
  - sudo apt-get -y install qt59-meta-full
  - sudo apt-get -y install qt59-meta-dbg-full
