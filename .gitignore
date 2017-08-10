@@ -8,3 +8,5 @@ GameHall_autogen
 .AppleDouble
 .LSOverride
 
+# vscode
+.vscode
