@@ -8,3 +8,9 @@ GameHall_autogen
 .AppleDouble
 .LSOverride
 
+# Vscode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
