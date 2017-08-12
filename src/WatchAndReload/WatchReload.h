@@ -11,7 +11,8 @@ public slots:
   void reloadApp();
 private:
   QQmlApplicationEngine *engine;
-  QObject *firstrootobj;
+  QObject *headerObj;
+  QObject *contentObj;
 };
 
 #endif
