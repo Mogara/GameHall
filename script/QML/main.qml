@@ -13,7 +13,7 @@ ApplicationWindow {
 
     header: Loader {
         id: header
-        source: "qrc:/HeaderComponent.qml"
+        source: "HeaderComponent.qml"
         objectName: "header"
         active: true
         Binding {
@@ -29,7 +29,7 @@ ApplicationWindow {
     Loader {
         id: content
         anchors.fill: parent
-        source: "qrc:/ContentComponent.qml"
+        source: "ContentComponent.qml"
         objectName: "content"
         active: true
         Binding {
