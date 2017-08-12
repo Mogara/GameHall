@@ -3,15 +3,14 @@ import QtQuick.Controls 2.0
 import QtQuick.Layouts 1.3
 
 Item {
+    // don't forget to expose the internal property using alias if you want you use it as a component
     property alias currentIndex: swipeView.currentIndex
     SwipeView {
         id: swipeView
         anchors.fill: parent
-        // we will bind this property in the Loader
-//        currentIndex: tabBar.currentIndex
         Page {
             Label {
-                text: qsTr("Secondpage")
+                text: qsTr("Second page")
                 anchors.centerIn: parent
             }
         }

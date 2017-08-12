@@ -9,4 +9,8 @@ GameHall_autogen
 .LSOverride
 
 # Vscode
-.vscode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json

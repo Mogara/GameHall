@@ -2,12 +2,12 @@ cmake_minimum_required(VERSION 2.8.12)
 
 project(GameHall LANGUAGES CXX)
 
-set(Watch_Dir_Path "\"${PROJECT_SOURCE_DIR}/script/QML\"")
+set(WATCH_DIR_PATH "\"${PROJECT_SOURCE_DIR}/script/QML\"")
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
-message(".................... Project Source Dir is:${Watch_Dir_Path}")
+message("Project Source Dir is:${WATCH_DIR_PATH}")
 
 configure_file (
         "${PROJECT_SOURCE_DIR}/src/WatchDirPath.h.in"
