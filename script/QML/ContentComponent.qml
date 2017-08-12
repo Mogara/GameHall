@@ -13,6 +13,9 @@ Item {
                 text: qsTr("Second page")
                 anchors.centerIn: parent
             }
+            Test {
+
+            }
         }
 
         Page {
