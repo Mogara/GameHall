@@ -6,7 +6,4 @@
         <file>ErrorComponent.qml</file>
         <file>HeaderComponent.qml</file>
     </qresource>
-    <qresource prefix="/testprefix">
-        <file>Test.qml</file>
-    </qresource>
 </RCC>
