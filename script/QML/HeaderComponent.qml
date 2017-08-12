@@ -4,15 +4,14 @@ import QtQuick.Layouts 1.3
 
 TabBar {
     id: tabBar
-    //on the top level of the component code, there shouldn't be anything related to parent. Use QtQuick.Layout to avoid it.
-//    contentWidth: parent.width
-//    anchors.bottom: parent.bottom
-    // we will bind this property in the Loader
-//    currentIndex: swipeView.currentIndex
+    // if you want to bind the property to parent just use the Loader id instead of parent.XXX
+    contentWidth: header.width
+    anchors.bottom: header.bottom
     TabButton {
-        text: qsTr("First333")
+        text: qsTr("First")
     }
     TabButton {
-        text: qsTr("Second222")
+        text: qsTr("Second")
     }
 }
+

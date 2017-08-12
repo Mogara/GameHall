@@ -1,7 +1,7 @@
 #include <QDebug>
+#include <iostream>
 #include "WatchReload.h"
 #include "WatchDirPath.h"
-#include <iostream>
 
 WatchReload::WatchReload(QQmlApplicationEngine *engine)
 {
@@ -10,40 +10,37 @@ WatchReload::WatchReload(QQmlApplicationEngine *engine)
     this->contentObj = this->engine->rootObjects().first()->findChild<QObject*>("content");
 }
 
-void WatchReload::reloadApp()
+void WatchReload::reload()
 {
     qDebug() << "file changes detected";
-    if (this->headerObj && this->contentObj){
-        qDebug() << "start reloading";
-        // make use of CMakeLists.txt to recoginize your path in localfilesystem
-        QString contentPath = Watch_Dir_Path, headerPath = Watch_Dir_Path;
+    if (this->headerObj && this->contentObj) {
+
+        // MACRO set from CMakeLists.txt
+        QString contentPath = WATCH_DIR_PATH;
+        QString headerPath = WATCH_DIR_PATH;
         headerPath = headerPath.prepend("file:").append("/HeaderComponent.qml");
         contentPath = contentPath.prepend("file:").append("/ContentComponent.qml");
 
         this->headerObj->setProperty("active",false);
         this->contentObj->setProperty("active",false);
-
-        qDebug() << "1111";
-
         this->engine->clearComponentCache();
         this->headerObj->setProperty("source",headerPath);
         this->contentObj->setProperty("source",contentPath);
         this->engine->clearComponentCache();
-
-        qDebug() << "1111";
-
         this->headerObj->setProperty("active",true);
         this->contentObj->setProperty("active",true);
 
-        if (this->headerObj->property("status").toString() == "3" || this->contentObj->property("status").toString() == "3"){
-            // another way is to use QScript to check the single script using QQmlComponent::loadUrl function which wastes time
-            qDebug() << "Error occured";
+        if (this->headerObj->property("status").toString() == "3"
+                || this->contentObj->property("status").toString() == "3") {
+            qDebug() << "Some error occured in your code";
             this->headerObj->setProperty("source","");
-            // setting loader's source to qrc:/filename.qml will set the ErrorComponent read-only at app's runtime, avoiding incorrectly change leading it down.
-            this->contentObj->setProperty("source","qrc:/ErrorComponent.qml");
-        }
 
-    }else {
-        qDebug() << "not find the first root obj";
+            // Avoiding incorrectly changes leading it down
+            this->contentObj->setProperty("source","qrc:/ErrorComponent.qml");
+        } else {
+            qDebug() << "Application reloaded successfully";
+        }
+    } else {
+        qDebug() << "No object named header or content";
     }
 }

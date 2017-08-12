@@ -19,8 +19,10 @@ ApplicationWindow {
         Binding {
             target: contentItemAlias
             property: 'currentIndex'
-            value: if (header.status == Loader.Ready) header.item.currentIndex //ensure the current status is not null
-            when: content.status === Loader.Ready // the content is ready
+            // ensure the current status is not null
+            value: if (header.status == Loader.Ready) header.item.currentIndex
+            // the content is ready
+            when: content.status === Loader.Ready
         }
     }
 

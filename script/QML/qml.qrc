@@ -7,6 +7,6 @@
         <file>HeaderComponent.qml</file>
     </qresource>
     <qresource prefix="/testprefix">
-        <file>TestComponent1.qml</file>
+        <file>Test.qml</file>
     </qresource>
 </RCC>
