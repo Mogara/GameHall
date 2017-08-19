@@ -4,6 +4,7 @@
 #include <QDebug>
 #include "WatchAndReload/WatchReload.h"
 #include "WatchDirPath.h"
+#include "DevelopMode.h"
 #include <iostream>
 
 int main(int argc, char *argv[])
@@ -25,8 +26,16 @@ int main(int argc, char *argv[])
         QStringList list = watcher.directories();
         qDebug() << "Watching dir list: "<< list[0].toUtf8().constData();
     }
+
     QQmlApplicationEngine engine;
+
+#if DEVELOP_MODE == ON
+    QString devPath = "../dev";
+    qputenv("QT_QUICK_CONTROLS_CONF", (devPath+"/qtquickcontrols.conf").toUtf8());
+    engine.load(QUrl(devPath+"/main.qml"));
+#else
     engine.load(QUrl(QLatin1String("qrc:/main.qml")));
+#endif
 
     // a function as a slot to receive and react to the signal
     WatchReload Reload(&engine);
