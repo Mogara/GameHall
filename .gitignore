@@ -1,10 +1,23 @@
 CMakeLists.txt.user
 CMakeFiles
-MakeFile
+Makefile
 GameHall_autogen
+CMakeCache.txt
+DevelopMode.h
+GameHall
+GameHall_automoc.cpp
+WatchDirPath.h
+cmake_install.cmake
+moc_WatchReload.cpp
 
 # Mac
 *.DS_Store
 .AppleDouble
 .LSOverride
 
+# Vscode
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
