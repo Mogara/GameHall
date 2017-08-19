@@ -30,10 +30,12 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
 
 #if DEVELOP_MODE == ON
-    QString devPath = "../dev";
-    qputenv("QT_QUICK_CONTROLS_CONF", (devPath+"/qtquickcontrols.conf").toUtf8());
+    std::cout << "1" << std::endl;
+    QString devPath = "./dev";
+    qputenv("QT_QUICK_CONTROLS_CONF", (devPath+"/qtquickcontrols2.conf").toUtf8());
     engine.load(QUrl(devPath+"/main.qml"));
 #else
+    std::cout << "2" << std::endl;
     engine.load(QUrl(QLatin1String("qrc:/main.qml")));
 #endif
 
