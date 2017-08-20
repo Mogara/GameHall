@@ -12,15 +12,15 @@ matrix:
       sudo: required
       #env: CONFIG=Release
       compiler: gcc
-    
+
 
 
 before_install:
   - |
     if [ "$TRAVIS_OS_NAME" = "linux" ]; then
-      # Need at least Qt 5.6 for QWebEnginePage::setBackgroundColor
-      # https://launchpad.net/~beineri/+archive/ubuntu/opt-qt562-trusty
-      sudo add-apt-repository ppa:beineri/opt-qt562-trusty -y &&
+      #Qt 5.9.1
+      # https://launchpad.net/~beineri/+archive/ubuntu/opt-qt59-trusty
+      sudo add-apt-repository ppa:beineri/opt-qt59-trusty -y &&
       sudo apt-get update -qq
     fi
   - |
@@ -33,9 +33,9 @@ before_install:
 install:
   - |
     if [ "$TRAVIS_OS_NAME" = "linux" ]; then
-        sudo apt-get install -qq qt56base &&
-        sudo apt-get install -qq qt56webengine &&
-        source /opt/qt56/bin/qt56-env.sh
+        sudo apt-get install -qq qt59base &&
+        sudo apt-get install -qq qt59webengine &&
+        source /opt/qt59/bin/qt59-env.sh
     fi
 script:
   - mkdir build && cd build
