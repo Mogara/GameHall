@@ -1,15 +1,9 @@
 CMakeLists.txt.user
 CMakeFiles
 Makefile
-MakeFile
 GameHall_autogen
 CMakeCache.txt
-DevelopMode.h
-GameHall
-GameHall_automoc.cpp
-WatchDirPath.h
-cmake_install.cmake
-moc_WatchReload.cpp
+build
 
 # Mac
 *.DS_Store

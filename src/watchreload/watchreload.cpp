@@ -1,7 +1,7 @@
 #include <QDebug>
 #include <iostream>
-#include "WatchReload.h"
-#include "WatchDirPath.h"
+#include "watchreload.h"
+#include "watchdirpath.h"
 
 WatchReload::WatchReload(QQmlApplicationEngine *engine)
 {

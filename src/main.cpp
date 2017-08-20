@@ -2,10 +2,8 @@
 #include <QQmlApplicationEngine>
 #include <QFileSystemWatcher>
 #include <QDebug>
-#include "WatchAndReload/WatchReload.h"
-#include "WatchDirPath.h"
-#include "DevelopMode.h"
-#include <iostream>
+#include "watchreload/watchreload.h"
+#include "utils.h"
 
 int main(int argc, char *argv[])
 {
@@ -30,7 +28,7 @@ int main(int argc, char *argv[])
     QQmlApplicationEngine engine;
 
 #if DEVELOP_MODE == ON
-    QString devPath = "./dev";
+    QString devPath = DEVELOP_DIR_PATH;
     qputenv("QT_QUICK_CONTROLS_CONF", (devPath+"/qtquickcontrols2.conf").toUtf8());
     engine.load(QUrl(devPath+"/main.qml"));
 #else
