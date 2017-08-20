@@ -23,8 +23,6 @@ configure_file(
 	"${PROJECT_BINARY_DIR}/DevelopMode.h"
 )
 
-message("${DEVELOP_MODE}")
-
 find_package(Qt5 COMPONENTS Core Quick REQUIRED)
 
 add_executable(${PROJECT_NAME} "src/main.cpp" "src/WatchAndReload/WatchReload.cpp" "src/WatchAndReload/WatchReload.h" "script/QML/qml.qrc")
