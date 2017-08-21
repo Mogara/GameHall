@@ -1,1 +1,0 @@
-#cmakedefine WATCH_DIR_PATH @WATCH_DIR_PATH@
