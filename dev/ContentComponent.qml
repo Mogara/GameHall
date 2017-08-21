@@ -10,7 +10,7 @@ Item {
         anchors.fill: parent
         Page {
             Label {
-                text: qsTr("Second page")
+                text: qsTr("Develop Page")
                 anchors.centerIn: parent
             }
         }
