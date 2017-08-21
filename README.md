@@ -4,5 +4,13 @@
 
 Game Hall of Cardirector. This is the Entrance of Cardirector Store.
 
-By default, the DEVELOP_MODE is OFF, program will access code under '/src'.
-To use DEVELOP_MODE, add "-D DEVELOP_MODE=ON" when cmake, in which case the program will turn to '/dev'.
+## Develop mode
++ ### features:
+  + Refresh your apps automactically when there are changes on QML file. No need to rebuild the whole project in develop mode.
+  + *qml.qrc* will not be used when the project is built.
++ ### Usage:
+  + By default, the develop mode is off.
+  + You can trigger **DEVELOP_MODE** by using
+    ```bash
+    cmake -D DEVELOP_MODE=ON $(project_path)
+    ```
