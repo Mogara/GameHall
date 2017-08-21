@@ -5,7 +5,6 @@ project(GameHall LANGUAGES CXX)
 option(DEVELOP_MODE "enable develop mode" OFF)
 
 set(WATCH_DIR_PATH "\"${PROJECT_SOURCE_DIR}/script/QML\"")
-set(DEVELOP_DIR_PATH "\"${PROJECT_SOURCE_DIR}/src\"")
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
