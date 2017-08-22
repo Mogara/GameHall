@@ -14,4 +14,3 @@ TabBar {
         text: qsTr("Second")
     }
 }
-
