@@ -1,0 +1,9 @@
+<RCC>
+    <qresource prefix="/">
+        <file>ContentComponent.qml</file>
+        <file>qtquickcontrols2.conf</file>
+        <file>main.qml</file>
+        <file>ErrorComponent.qml</file>
+        <file>HeaderComponent.qml</file>
+    </qresource>
+</RCC>
