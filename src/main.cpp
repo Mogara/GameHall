@@ -27,7 +27,7 @@ int main(int argc, char *argv[])
 
     QQmlApplicationEngine engine;
 
-#if DEVELOP_MODE == ON
+#if defined(DEVELOP_MODE)
     QString devPath = WATCH_DIR_PATH;
     qputenv("QT_QUICK_CONTROLS_CONF", (devPath+"/qtquickcontrols2.conf").toUtf8());
     engine.load(QUrl(devPath+"/main.qml"));
