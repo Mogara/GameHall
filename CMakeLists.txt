@@ -3,7 +3,7 @@ cmake_minimum_required(VERSION 2.8.12)
 project(GameHall LANGUAGES CXX)
 
 option(DEVELOP_MODE "enable develop mode" OFF)
-set(WATCH_DIR_PATH "\"${PROJECT_SOURCE_DIR}/script/QML\"")
+set(WATCH_DIR_PATH "\"${PROJECT_SOURCE_DIR}/script/qml\"")
 
 set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
@@ -21,7 +21,7 @@ find_package(Qt5 COMPONENTS Core Quick REQUIRED)
 if(DEVELOP_MODE)
 	add_executable(${PROJECT_NAME} "src/main.cpp" "src/watchreload/watchreload.cpp" "src/watchreload/watchreload.h")
 else()
-	add_executable(${PROJECT_NAME} "src/main.cpp" "script/QML/qml.qrc")
+	add_executable(${PROJECT_NAME} "src/main.cpp" "script/qml/qml.qrc")
 endif()
 
 target_link_libraries(${PROJECT_NAME} Qt5::Core Qt5::Quick)
