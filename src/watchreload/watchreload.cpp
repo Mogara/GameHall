@@ -1,6 +1,6 @@
 #include <QDebug>
+
 #include "watchreload.h"
-#include "utils.h"
 
 WatchReload::WatchReload(QQmlApplicationEngine *engine)
 {
@@ -14,17 +14,11 @@ void WatchReload::reload()
     qDebug() << "file changes detected";
     if (this->headerObj && this->contentObj) {
 
-        // MACRO set from CMakeLists.txt
-        QString contentPath = WATCH_DIR_PATH;
-        QString headerPath = WATCH_DIR_PATH;
-        headerPath = headerPath.prepend("file:").append("/HeaderComponent.qml");
-        contentPath = contentPath.prepend("file:").append("/ContentComponent.qml");
-
         this->headerObj->setProperty("active",false);
         this->contentObj->setProperty("active",false);
         this->engine->clearComponentCache();
-        this->headerObj->setProperty("source",headerPath);
-        this->contentObj->setProperty("source",contentPath);
+        this->headerObj->setProperty("source","../script/QML/HeaderComponent.qml");
+        this->contentObj->setProperty("source","../script/QML/ContentComponent.qml");
         this->engine->clearComponentCache();
         this->headerObj->setProperty("active",true);
         this->contentObj->setProperty("active",true);
@@ -35,7 +29,7 @@ void WatchReload::reload()
             this->headerObj->setProperty("source","");
 
             // Avoiding incorrectly changes leading it down
-            this->contentObj->setProperty("source","qrc:/ErrorComponent.qml");
+            this->contentObj->setProperty("source","../script/QML/ErrorComponent.qml");
         } else {
             qDebug() << "Application reloaded successfully";
         }
