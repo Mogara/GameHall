@@ -17,8 +17,8 @@ void WatchReload::reload()
         this->headerObj->setProperty("active",false);
         this->contentObj->setProperty("active",false);
         this->engine->clearComponentCache();
-        this->headerObj->setProperty("source","../script/QML/HeaderComponent.qml");
-        this->contentObj->setProperty("source","../script/QML/ContentComponent.qml");
+        this->headerObj->setProperty("source","../script/qml/HeaderComponent.qml");
+        this->contentObj->setProperty("source","../script/qml/ContentComponent.qml");
         this->engine->clearComponentCache();
         this->headerObj->setProperty("active",true);
         this->contentObj->setProperty("active",true);
@@ -29,7 +29,7 @@ void WatchReload::reload()
             this->headerObj->setProperty("source","");
 
             // Avoiding incorrectly changes leading it down
-            this->contentObj->setProperty("source","../script/QML/ErrorComponent.qml");
+            this->contentObj->setProperty("source","../script/qml/ErrorComponent.qml");
         } else {
             qDebug() << "Application reloaded successfully";
         }
