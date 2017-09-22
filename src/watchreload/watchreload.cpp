@@ -1,5 +1,6 @@
 #include <QDebug>
 
+#include "utils.h"
 #include "watchreload.h"
 
 WatchReload::WatchReload(QQmlApplicationEngine *engine)
@@ -14,11 +15,20 @@ void WatchReload::reload()
     qDebug() << "file changes detected";
     if (this->headerObj && this->contentObj) {
 
+        QString contentPath = WATCH_DIR_PATH;
+        QString headerPath = WATCH_DIR_PATH;
+        QString errorPath = WATCH_DIR_PATH;
+
+        //use absolute path can avoid difference
+        headerPath.prepend("file:").append("/HeaderComponent.qml");
+        contentPath.prepend("file:").append("/ContentComponent.qml");
+        errorPath.prepend("file:").append("/ErrorComponent.qml");
+
         this->headerObj->setProperty("active",false);
         this->contentObj->setProperty("active",false);
         this->engine->clearComponentCache();
-        this->headerObj->setProperty("source","../script/qml/HeaderComponent.qml");
-        this->contentObj->setProperty("source","../script/qml/ContentComponent.qml");
+        this->headerObj->setProperty("source",headerPath);
+        this->contentObj->setProperty("source",contentPath);
         this->engine->clearComponentCache();
         this->headerObj->setProperty("active",true);
         this->contentObj->setProperty("active",true);
@@ -29,7 +39,7 @@ void WatchReload::reload()
             this->headerObj->setProperty("source","");
 
             // Avoiding incorrectly changes leading it down
-            this->contentObj->setProperty("source","../script/qml/ErrorComponent.qml");
+            this->contentObj->setProperty("source",errorPath);
         } else {
             qDebug() << "Application reloaded successfully";
         }
