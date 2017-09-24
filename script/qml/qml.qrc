@@ -5,5 +5,6 @@
         <file>main.qml</file>
         <file>ErrorComponent.qml</file>
         <file>HeaderComponent.qml</file>
+        <file>maindev.qml</file>
     </qresource>
 </RCC>
