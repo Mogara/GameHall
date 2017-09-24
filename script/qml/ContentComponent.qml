@@ -9,15 +9,31 @@ Item {
         id: swipeView
         anchors.fill: parent
         Page {
+            TextField {
+                id: textField1
+                anchors.left: parent.left
+                placeholderText: qsTr("Game Hall Dev Text Field")
+            }
+            Button {
+                id: button1
+                anchors.right: parent.right
+                text: qsTr("Press Me")
+                onClicked: {
+                    console.log("Button Pressed. Entered text: " + textField1.text);
+                }
+            }
             Label {
-                text: qsTr("Second page")
+                text: qsTr("First page")
                 anchors.centerIn: parent
             }
         }
 
         Page {
             Button {
-                onClicked: popup.open()
+                onClicked: {
+                    popup.open()
+                    console.log("Button clicked")
+                }
                 Popup {
                     id: popup
                     parent: ApplicationWindow.overlay

@@ -18,8 +18,17 @@ configure_file (
 
 find_package(Qt5 COMPONENTS Core Quick REQUIRED)
 
+set(DEV_EXECFILE ${DEV_EXECFILE}
+    "src/main.cpp"
+    "src/watchreload/watchreload.h" "src/watchreload/watchreload.cpp"
+    "src/logconsole/logger.h" "src/logconsole/logger.cpp"
+    "src/logconsole/qmllive_global.h"
+
+    "script/qml/qml.qrc"
+)
+
 if(DEVELOP_MODE)
-    add_executable(${PROJECT_NAME} "src/main.cpp" "src/watchreload/watchreload.cpp" "src/watchreload/watchreload.h")
+    add_executable(${PROJECT_NAME} ${DEV_EXECFILE})
 else()
 	add_executable(${PROJECT_NAME} "src/main.cpp" "script/qml/qml.qrc")
 endif()

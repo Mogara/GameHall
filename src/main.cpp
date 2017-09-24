@@ -5,7 +5,16 @@
 
 #include "utils.h"
 #ifdef DEVELOP_MODE
+#include "logconsole/logger.h"
 #include "watchreload/watchreload.h"
+
+// http://doc.qt.io/qt-5/qqmlengine.html#qmlRegisterSingletonType-1
+static QObject *logSingletonProvider(QQmlEngine *engine, QJSEngine *scriptEngine){
+    Q_UNUSED(engine)
+    Q_UNUSED(scriptEngine)
+
+   return Logger::instance();
+}
 #endif
 
 int main(int argc, char *argv[])
@@ -32,8 +41,12 @@ int main(int argc, char *argv[])
     QString confFilePath = WATCH_DIR_PATH;
     QString mainQmlPath = WATCH_DIR_PATH;
     confFilePath.append("/qtquickcontrols2.conf");
-    mainQmlPath.append("/main.qml");
+    mainQmlPath.append("/maindev.qml");
     qputenv("QT_QUICK_CONTROLS_CONF", (confFilePath).toUtf8());
+
+    // register the singleton class to QML engine used to send log message signal
+    qmlRegisterSingletonType<Logger>("qmllive.logger", 1, 0, "Logger",logSingletonProvider);
+
     engine.load(QUrl(mainQmlPath));
     // a function as a slot to receive and react to the signal
     WatchReload reloader(&engine);
