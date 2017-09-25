@@ -53,12 +53,14 @@ QMutex Logger::m_mutex;
 Logger::Logger(QObject *parent) :
     QObject(parent)
 {
+#if defined(DEVELOP_MODE)
     if (s_instance) {
         qFatal("Cannot create more than one Logger");
     }
     s_instance = this;
 
     qInstallMessageHandler(messageHandler);
+#endif
 }
 
 /*!
@@ -66,7 +68,9 @@ Logger::Logger(QObject *parent) :
  */
 Logger::~Logger()
 {
+#if defined(DEVELOP_MODE)
     qInstallMessageHandler(0);
+#endif
 }
 
 /*!
@@ -74,12 +78,15 @@ Logger::~Logger()
  */
 void Logger::setIgnoreMessages(bool ignoreMessages)
 {
+#if defined(DEVELOP_MODE)
     QMutexLocker l(&m_mutex);
     s_ignoreMesssages = ignoreMessages;
+#endif
 }
 
 void Logger::messageHandler(QtMsgType type, const QMessageLogContext& context, const QString& msg)
 {
+#if defined(DEVELOP_MODE)
     if (!s_instance) {
         printf("No Logger instance for log message:\n  %s\n", msg.toLatin1().constData());
         abort();
@@ -113,6 +120,7 @@ void Logger::messageHandler(QtMsgType type, const QMessageLogContext& context, c
     case QtFatalMsg:
         fprintf(stderr, "Fatal: %s (%s:%u, %s)\n", localMsg.constData(), context.file, context.line, context.function);
     }
+#endif
 }
 
 /*!

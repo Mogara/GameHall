@@ -5,14 +5,17 @@
 
 WatchReload::WatchReload(QQmlApplicationEngine *engine)
 {
+#if defined(DEVELOP_MODE)
     this->engine = engine;
     this->headerObj = this->engine->rootObjects().first()->findChild<QObject*>("header");
     this->contentObj = this->engine->rootObjects().first()->findChild<QObject*>("content");
+#endif
 }
 
 void WatchReload::reload()
 {
-    qDebug() << "file changes detected";
+#if defined(DEVELOP_MODE)
+    // qDebug() << "file changes detected";
     if (this->headerObj && this->contentObj) {
 
         QString contentPath = WATCH_DIR_PATH;
@@ -44,6 +47,7 @@ void WatchReload::reload()
             qDebug() << "Application reloaded successfully";
         }
     } else {
-        qDebug() << "No object named header or content";
+        // qDebug() << "No object named header or content";
     }
+#endif
 }
