@@ -39,4 +39,26 @@ ApplicationWindow {
             when: header.status === Loader.Ready
         }
     }
+    Loader {
+        id: logloader
+        anchors.fill: parent
+        source: ""
+        objectName: "console"
+    }
+
+    Shortcut {
+        objectName: "clearlog"
+        enabled: false
+        sequence: "Ctrl+L"
+        onActivated: logloader.item.clearlog()
+    }
+
+    Shortcut {
+        objectName: "showlog"
+        enabled: false
+        sequence: "F12"
+        onActivated: {
+            logloader.item.show = !logloader.item.show
+        }
+    }
 }
