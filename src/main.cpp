@@ -1,6 +1,7 @@
 #include <QDebug>
 #include <QFileSystemWatcher>
 #include <QGuiApplication>
+#include <QtQml>
 #include <QQmlApplicationEngine>
 
 #include "utils.h"
@@ -57,8 +58,6 @@ int main(int argc, char *argv[])
     QObject *showShortCut = engine.rootObjects().first()->findChild<QObject *>("showlog");
     QObject *clearShortCut = engine.rootObjects().first()->findChild<QObject *>("clearlog");
     consoleObj->setProperty("source",consolePath);
-    showShortCut->setProperty("enabled",true);
-    clearShortCut->setProperty("enabled",true);
 
     WatchReload reloader(&engine);
     QObject::connect(&filewatcher,&QFileSystemWatcher::directoryChanged,&reloader,&WatchReload::reload);
