@@ -16,7 +16,7 @@ configure_file (
         "${PROJECT_BINARY_DIR}/utils.h"
 )
 
-find_package(Qt5 COMPONENTS Core Quick REQUIRED)
+find_package(Qt5 COMPONENTS Core Quick Qml REQUIRED)
 
 set(EXECUTABLE_FILE ${EXECUTABLE_FILE}
     "src/main.cpp"
@@ -31,4 +31,4 @@ else()
     add_executable(${PROJECT_NAME} ${EXECUTABLE_FILE} "script/qml/qml.qrc")
 endif()
 
-target_link_libraries(${PROJECT_NAME} Qt5::Core Qt5::Quick)
+target_link_libraries(${PROJECT_NAME} Qt5::Core Qt5::Quick Qt5::Qml)

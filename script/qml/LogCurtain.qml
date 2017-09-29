@@ -36,7 +36,7 @@ Flickable { // This is used to let the textedit be scrollable
         activeFocusOnPress: false
         cursorVisible: false
         readOnly: true
-        wrapMode: TextEdit.WordWrap
+        wrapMode: TextEdit.Wrap
         textFormat: TextEdit.AutoText // enable richtext if possible
         visible: false // default is invisible
         Connections {
