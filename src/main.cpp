@@ -55,8 +55,6 @@ int main(int argc, char *argv[])
 
     // make the console and shortcut only available in DEVELOP_MODE
     QObject *consoleObj = engine.rootObjects().first()->findChild<QObject *>("console");
-    QObject *showShortCut = engine.rootObjects().first()->findChild<QObject *>("showlog");
-    QObject *clearShortCut = engine.rootObjects().first()->findChild<QObject *>("clearlog");
     consoleObj->setProperty("source",consolePath);
 
     WatchReload reloader(&engine);
