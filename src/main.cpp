@@ -4,7 +4,6 @@
 #include <QtQml>
 #include <QQmlApplicationEngine>
 
-#include "utils.h"
 #include "logconsole/logger.h"
 #include "watchreload/watchreload.h"
 

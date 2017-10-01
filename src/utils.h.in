@@ -1,3 +1,0 @@
-#cmakedefine WATCH_DIR_PATH @WATCH_DIR_PATH@
-
-#cmakedefine DEVELOP_MODE @DEVELOP_MODE@
