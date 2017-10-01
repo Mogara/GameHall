@@ -51,9 +51,7 @@ int main(int argc, char *argv[])
     qputenv("QT_QUICK_CONTROLS_CONF", (confFilePath).toUtf8());
 
     engine.load(QUrl(mainQmlPath));
-    // a function as a slot to receive and react to the signal
 
-    // make the console and shortcut only available in DEVELOP_MODE
     QObject *consoleObj = engine.rootObjects().first()->findChild<QObject *>("console");
     consoleObj->setProperty("source",consolePath);
 
@@ -62,6 +60,12 @@ int main(int argc, char *argv[])
 #else
     qDebug() << "DEVELOP_MODE=OFF";
     engine.load(QUrl(QLatin1String("qrc:/main.qml")));
+
+    // make the console and shortcut only available in DEVELOP_MODE
+    QObject *showlogObj = engine.rootObjects().first()->findChild<QObject *>("showlog");
+    showlogObj->setProperty("enabled",false);
+    QObject *clearlogObj = engine.rootObjects().first()->findChild<QObject *>("clearlog");
+    clearlogObj->setProperty("enabled",false);
 #endif
 
     if (engine.rootObjects().isEmpty())
