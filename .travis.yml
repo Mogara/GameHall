@@ -19,8 +19,8 @@ before_install:
   - |
     if [ "$TRAVIS_OS_NAME" = "linux" ]; then
       #Qt 5.9.1
-      # https://launchpad.net/~beineri/+archive/ubuntu/opt-qt59-trusty
-      sudo add-apt-repository ppa:beineri/opt-qt59-trusty -y &&
+      # https://launchpad.net/~beineri/+archive/ubuntu/opt-qt591-trusty
+      sudo add-apt-repository ppa:beineri/opt-qt591-trusty -y &&
       sudo apt-get update -qq
     fi
   - |
