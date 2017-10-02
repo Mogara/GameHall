@@ -4,7 +4,6 @@
 #include <QtQml>
 #include <QQmlApplicationEngine>
 
-#include "utils.h"
 #include "logconsole/logger.h"
 #include "watchreload/watchreload.h"
 
@@ -51,9 +50,7 @@ int main(int argc, char *argv[])
     qputenv("QT_QUICK_CONTROLS_CONF", (confFilePath).toUtf8());
 
     engine.load(QUrl(mainQmlPath));
-    // a function as a slot to receive and react to the signal
 
-    // make the console and shortcut only available in DEVELOP_MODE
     QObject *consoleObj = engine.rootObjects().first()->findChild<QObject *>("console");
     consoleObj->setProperty("source",consolePath);
 

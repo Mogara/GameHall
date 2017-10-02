@@ -36,7 +36,6 @@
 #include <QUrl>
 
 #include "qmllive_global.h"
-#include "utils.h"
 
 class QMLLIVESHARED_EXPORT Logger : public QObject
 {

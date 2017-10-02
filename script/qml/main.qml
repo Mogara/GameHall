@@ -48,14 +48,14 @@ ApplicationWindow {
 
     Shortcut {
         objectName: "clearlog"
-        enabled: true
+        enabled: logloader.source == "" ? false : true
         sequence: "Ctrl+L"
         onActivated: logloader.item.clearlog()
     }
 
     Shortcut {
         objectName: "showlog"
-        enabled: true
+        enabled: logloader.source == "" ? false : true
         sequence: "F12"
         onActivated: {
             logloader.item.show = !logloader.item.show

@@ -1,6 +1,5 @@
 #include <QDebug>
 
-#include "utils.h"
 #include "watchreload.h"
 
 WatchReload::WatchReload(QQmlApplicationEngine *engine)
