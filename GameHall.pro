@@ -2,6 +2,10 @@ QT += qml quick
 
 CONFIG += c++11
 
+# Enable Precompiled headers (PCH)
+CONFIG += precompile_header
+PRECOMPILED_HEADER = src/pch.h
+
 INCLUDEPATH += \
     src/application \
     src/common
