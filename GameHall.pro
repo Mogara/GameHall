@@ -21,8 +21,8 @@ RESOURCES += script/qml/qml.qrc
 # get the path of qml dir and pass it as macro
 WATCH_DIR_PATH = $${_PRO_FILE_PWD_}/script/qml\
 
-!isEmpty(DEVELOP_MODE) {
-    DEFINES += "DEVELOP_MODE=1"
+CONFIG(develop_mode) {
+    DEFINES += DEVELOP_MODE
     DEFINES += "WATCH_DIR_PATH=\\\"$$WATCH_DIR_PATH\\\""
     RESOURCES -= script/qml/qml.qrc
 }

@@ -10,7 +10,7 @@ Game Hall of Cardirector. This is the Entrance of Cardirector Store.
   + *qml.qrc* will not be used when the project is built.
   + Add log output console support
 + ### Usage:
-  + You can trigger DEVELOP_MODE by adding ***additional arguments*** in Project aspect of QtCreator with "DEVELOP_MODE=ON" or `qmake  DEVELOP_MODE=ON \<path to pro>` if you prefer cli.
+  + You can trigger DEVELOP_MODE by adding ***additional arguments*** in Project aspect of QtCreator with "CONFIG+=develop_mode" or `qmake CONFIG+=develop_mode \<path to pro>` if you prefer cli.
   
   + Because we only check whether the variable exists in .pro file,  actually any value is ok. 
   
