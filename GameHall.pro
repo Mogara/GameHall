@@ -31,6 +31,7 @@ CONFIG(develop_mode) {
     RESOURCES -= script/qml/qml.qrc
 }
 
+
 # Output a library instead of an application
 CONFIG(build_library): DEFINES += MGH_BUILD_LIBRARY
 
