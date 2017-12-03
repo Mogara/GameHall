@@ -1,5 +1,5 @@
 import QtQuick 2.7
-import qmllive.logger 1.0 as MyLog
+import qmllive.logger 1.0 as Logger
 
 
 // http://doc.qt.io/qt-5/qml-qtquick-textedit.html
@@ -7,14 +7,14 @@ import qmllive.logger 1.0 as MyLog
 Flickable { // This is used to let the textedit be scrollable
     id: flickable
 
-    property alias show: logcurtain.visible
-    property var clearlog: logcurtain.clear
+    property alias show: consoleText.visible
+    property var clearlog: consoleText.clear
 
     enabled: false
     width: parent.width
     height: parent.height
-    contentWidth: logcurtain.paintedWidth
-    contentHeight: logcurtain.paintedHeight
+    contentWidth: consoleText.paintedWidth
+    contentHeight: consoleText.paintedHeight
     function ensureVisible(r)
     {
         if (contentX >= r.x)
@@ -27,7 +27,7 @@ Flickable { // This is used to let the textedit be scrollable
             contentY = r.y + r.height - height;
     }
     TextEdit { // By making use of this component's append method, we can easily record log
-        id:logcurtain
+        id: consoleText
         width: flickable.width
         height: flickable.height
         opacity: 0.4
@@ -40,8 +40,8 @@ Flickable { // This is used to let the textedit be scrollable
         textFormat: TextEdit.AutoText // enable richtext if possible
         visible: false // default is invisible
         Connections {
-            target: MyLog.Logger
-            onMessage: logcurtain.append("<b>" + msg + "</b>")
+            target: Logger.Logger
+            onMessage: consoleText.append("<b>" + msg + "</b>")
         }
         onCursorRectangleChanged: flickable.ensureVisible(cursorRectangle)
     }

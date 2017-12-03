@@ -40,7 +40,7 @@ ApplicationWindow {
         }
     }
     Loader {
-        id: logloader
+        id: logLoader
         anchors.fill: parent
         source: ""
         objectName: "console"
@@ -48,17 +48,17 @@ ApplicationWindow {
 
     Shortcut {
         objectName: "clearlog"
-        enabled: logloader.source == "" ? false : true
+        enabled: logLoader.source != ""
         sequence: "Ctrl+L"
-        onActivated: logloader.item.clearlog()
+        onActivated: logLoader.item.clearlog()
     }
 
     Shortcut {
         objectName: "showlog"
-        enabled: logloader.source == "" ? false : true
+        enabled: logLoader.source != ""
         sequence: "F12"
         onActivated: {
-            logloader.item.show = !logloader.item.show
+            logLoader.item.show = !logLoader.item.show
         }
     }
 }

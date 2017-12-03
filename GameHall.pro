@@ -2,13 +2,19 @@ QT += qml quick
 
 CONFIG += c++11
 
-HEADERS += src/watchreload/watchreload.h \
-           src/logconsole/logger.h \
-           src/logconsole/qmllive_global.h \
+INCLUDEPATH += \
+    src/application \
+    src/common
 
-SOURCES += src/main.cpp \
-           src/watchreload/watchreload.cpp \
-           src/logconsole/logger.cpp \
+HEADERS += \
+    src/pch.h \
+    $$files(src/application/*.h) \
+    $$files(src/common/*.h)
+
+SOURCES += \
+    src/main.cpp \
+    $$files(src/application/*.cpp) \
+    $$files(src/common/*.cpp)
 
 RESOURCES += script/qml/qml.qrc
 
@@ -20,6 +26,9 @@ WATCH_DIR_PATH = $${_PRO_FILE_PWD_}/script/qml\
     DEFINES += "WATCH_DIR_PATH=\\\"$$WATCH_DIR_PATH\\\""
     RESOURCES -= script/qml/qml.qrc
 }
+
+# Output a library instead of an application
+CONFIG(build_library): DEFINES += MGH_BUILD_LIBRARY
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
