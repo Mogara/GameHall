@@ -15,6 +15,7 @@ public:
 
     void reload()
     {
+#ifdef DEVELOP_MODE
         if (headerObject != NULLPTR && contentObject != NULLPTR) {
 
             // Use absolute path to avoid difference
@@ -45,6 +46,7 @@ public:
                 qDebug() << "Qml reloaded";
             }
         }
+#endif // DEVELOP_MODE
     }
 
     QQmlApplicationEngine *engine;
@@ -106,6 +108,7 @@ LiveReloader::~LiveReloader()
 
 void LiveReloader::beginWatching()
 {
+#ifdef DEVELOP_MODE
     M_P(LiveReloader);
 
     p->headerObject = p->engine->rootObjects().first()->findChild<QObject *>(p->HEADER_ID);
@@ -121,4 +124,7 @@ void LiveReloader::beginWatching()
     }
 
     QObject::connect(&p->fileWatcher, &QFileSystemWatcher::directoryChanged, [p]{ p->reload(); });
+#else
+    qFatal("Attempt to watch qml changes outside develop mode!");
+#endif // DEVELOP_MODE
 }

@@ -6,15 +6,19 @@
 #include <QDebug>
 #include <QQmlApplicationEngine>
 
+#ifdef DEVELOP_MODE
 static QObject *loggerSingletonProvider(QQmlEngine *, QJSEngine *){
    return Logger::instance();
 }
+#endif // DEVELOP_MODE
 
 class ApplicationEnginePrivate
 {
 public:
     ApplicationEnginePrivate()
+#ifdef DEVELOP_MODE
         : liveReloader(&engine)
+#endif // DEVELOP_MODE
     {
 
     }
@@ -41,7 +45,7 @@ public:
         liveReloader.beginWatching();
 #else
         qDebug() << "DEVELOP_MODE=OFF";
-        engine.load(QUrl(QLatin1String(DEFAULT_MAIL_QML_PATH)));
+        engine.load(QUrl(DEFAULT_MAIL_QML_PATH));
 #endif // DEVELOP_MODE
     }
 
