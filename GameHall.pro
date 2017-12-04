@@ -2,24 +2,38 @@ QT += qml quick
 
 CONFIG += c++11
 
-HEADERS += src/watchreload/watchreload.h \
-           src/logconsole/logger.h \
-           src/logconsole/qmllive_global.h \
+# Enable Precompiled headers (PCH)
+CONFIG += precompile_header
+PRECOMPILED_HEADER = src/pch.h
 
-SOURCES += src/main.cpp \
-           src/watchreload/watchreload.cpp \
-           src/logconsole/logger.cpp \
+INCLUDEPATH += \
+    src/application \
+    src/common
+
+HEADERS += \
+    src/pch.h \
+    $$files(src/application/*.h) \
+    $$files(src/common/*.h)
+
+SOURCES += \
+    src/main.cpp \
+    $$files(src/application/*.cpp) \
+    $$files(src/common/*.cpp)
 
 RESOURCES += script/qml/qml.qrc
 
 # get the path of qml dir and pass it as macro
 WATCH_DIR_PATH = $${_PRO_FILE_PWD_}/script/qml\
 
-!isEmpty(DEVELOP_MODE) {
-    DEFINES += "DEVELOP_MODE=1"
+CONFIG(develop_mode) {
+    DEFINES += DEVELOP_MODE
     DEFINES += "WATCH_DIR_PATH=\\\"$$WATCH_DIR_PATH\\\""
     RESOURCES -= script/qml/qml.qrc
 }
+
+
+# Output a library instead of an application
+CONFIG(build_library): DEFINES += MGH_BUILD_LIBRARY
 
 # Additional import path used to resolve QML modules in Qt Creator's code model
 QML_IMPORT_PATH =
